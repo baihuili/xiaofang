@@ -1,0 +1,47 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/caiji/caiji",
+    "pages/liliang/liliang",
+	 "pages/tongji/tongji",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#1AAD19",
+    "navigationBarTitleText": "文昌消防",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#D42624",
+    "borderStyle": "#D42624",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/caiji/caiji",
+        "iconPath": "images/form.png",
+        "selectedIconPath": "images/form-on.png",
+        "text": "消防采集"
+      },
+      {
+        "pagePath": "pages/liliang/liliang",
+        "iconPath": "images/position.png",
+        "selectedIconPath": "images/position-on.png",
+        "text": "消防力量"
+      },
+      {
+        "pagePath": "pages/tongji/tongji",
+        "iconPath": "images/tongji.png",
+        "selectedIconPath": "images/tongji-on.png",
+        "text": "统计图表"
+      }
+    ]
+  }
+}

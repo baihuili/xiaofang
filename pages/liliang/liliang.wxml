@@ -1,0 +1,26 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="" hidden="{{activeIndex != 0}}">
+			<map id="map" longitude="110.74978222747802" include-points="{{markers}}" latitude="19.621861960580546" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 100vh;"></map>
+		</view>
+        <view  hidden="{{activeIndex != 1}}">
+			<map id="map" longitude="110.74978222747802" include-points="{{markers}}" latitude="19.621861960580546" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 100vh;"></map>
+		</view>
+        <view  hidden="{{activeIndex != 2}}">
+			<map id="map" longitude="110.74978222747802" include-points="{{markers}}" latitude="19.621861960580546" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 100vh;"></map>
+		</view>
+
+      </view>
+    </view>
+  </view>
+</view>
