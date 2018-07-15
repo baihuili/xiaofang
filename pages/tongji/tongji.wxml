@@ -1,2 +1,13 @@
-<!--pages/tongji/tongji.wxml-->
-<text>pages/tongji/tongji.wxml</text>
+<view class="container"> 
+	<navigator url="/pages/charts/column/column" class="weui-cell weui-cell_access">
+		<view class="weui-cell__bd">采集数量统计柱状图</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+	</navigator>
+	
+	<navigator url="/pages/charts/pie/pie" class="weui-cell weui-cell_access">
+		<view class="weui-cell__bd">采集数量饼状图</view>
+		<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+	</navigator>
+
+
+</view>

@@ -4,6 +4,14 @@
     "pages/caiji/caiji",
     "pages/liliang/liliang",
 	 "pages/tongji/tongji",
+	 "pages/tongji/shuliang/shuliang",
+   "pages/charts/scrollline/scrollline",
+  "pages/charts/radar/radar",
+  "pages/charts/line/line",
+  "pages/charts/column/column",
+  "pages/charts/pie/pie",
+  "pages/charts/ring/ring",
+  "pages/charts/area/area",
     "pages/logs/logs"
   ],
   "window":{

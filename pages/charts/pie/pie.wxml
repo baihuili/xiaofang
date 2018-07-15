@@ -1,0 +1,7 @@
+<view class="container">
+	
+	<view class="title">
+		采集数量分布饼状图
+	</view>
+    <canvas canvas-id="pieCanvas" class="canvas" style="height:300px" bindtouchstart="touchHandler"></canvas>
+</view>
