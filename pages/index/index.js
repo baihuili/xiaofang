@@ -1,38 +1,102 @@
-Page({ 
- data: { 
- phone: '', 
- password:''
- }, 
-  
-// 获取输入账号 
- phoneInput :function (e) { 
- this.setData({ 
-  phone:e.detail.value 
- }) 
- }, 
-  
-// 获取输入密码 
- passwordInput :function (e) { 
- this.setData({ 
-  password:e.detail.value 
- }) 
- }, 
-  
-// 登录 
- login: function () { 
- if(this.data.phone.length == 0 || this.data.password.length == 0){ 
-  wx.showToast({ 
-  title: '用户名和密码不能为空', 
-  icon: 'loading', 
-  duration: 2000 
-  }) 
-}else { 
- // 这里修改成跳转的页面 
-  wx.showToast({ 
-  title: '登录成功', 
-  icon: 'success', 
-  duration: 2000 
-  }) 
- } 
- } 
+Page({
+  data: {
+    userInfo: {
+      id: null,
+      username: '',
+      password: '',
+      userRealName: '',
+      secrect: ''
+    },
+    login: null,
+    logBtnDisable: false,
+    loading: false
+  },
+  onLoad:function(){
+    this.setData({
+      userInfo: getApp().globalData.userInfo,
+      login: getApp().globalData.login
+    });
+  },
+
+  // 获取输入账号 
+  phoneInput: function (e) {
+    var up = "userInfo.username";
+    this.setData({
+      [up]: e.detail.value
+    });
+
+  },
+
+  // 获取输入密码 
+  passwordInput: function (e) {
+    var up = "userInfo.password";
+    this.setData({
+      [up]: e.detail.value
+    });
+  },
+
+  // 登录 
+  login: function () {
+    if (this.data.userInfo==null || this.data.userInfo.username.length == 0 || this.data.userInfo.password.length == 0) {
+      wx.showModal({
+        content: '用户名和密码不能为空',
+        showCancel: false
+      });
+    } else {
+      var that = this;
+      that.setData({
+        logBtnDisable: true,
+        loading: true
+      });
+      wx.request({
+        url: getApp().globalData.server_url + 'small_login.action',
+        method: "POST",
+        data: { 'sysuser': that.data.userInfo },
+        header: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+          that.setData({
+            logBtnDisable: false,
+            loading: false
+          });
+          if (res.data.success) {
+            var id = "userInfo.id";
+            var secrect = "userInfo.secrect";
+            var userRealName = "userInfo.userRealName";
+            var password = "userInfo.password";
+            that.setData({
+              [id]: res.data.id,
+              [secrect]: res.data.secrect,
+              [userRealName]: res.data.userRealName,
+              [password]: null,
+              ['login']: true
+            });
+
+            wx.setStorageSync('login', true);
+            wx.setStorageSync('userInfo', that.data.userInfo);
+          } else {
+            wx.showModal({
+              content: '用户名、密码错误',
+              showCancel: false
+            });
+          };
+        },
+        error: function (res) {
+          that.setData({
+            logBtnDisable: false,
+            loading: false
+          });
+        }
+      })
+    }
+  },
+  logout: function () {
+    this.setData({
+      userInfo: null,
+      login: false
+    });
+    wx.setStorageSync('login', false);
+    wx.setStorageSync('userInfo', null);
+  }
 })

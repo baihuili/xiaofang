@@ -2,21 +2,22 @@
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    this.globalData.login = wx.getStorageSync('login') || null
+    this.globalData.userInfo = wx.getStorageSync('userInfo') || null
+    
 
     wx.getLocation({
       success: res => {
        // console.log(res);
         this.globalData.location=res;
-         console.log(this.globalData.location);
       },
     })
   },
   globalData: {
     url:'',
+    login:null,//是否已经登录
     userInfo: null,
-    location:null
+    location:null,
+    server_url:'http://localhost:8080/xiaofang/'
   }
 })
