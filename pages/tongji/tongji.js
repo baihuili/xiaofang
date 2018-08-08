@@ -1,66 +1,52 @@
-// pages/tongji/tongji.js
+var wxCharts = require('../../utils/wxcharts.js');
+var app = getApp();
+var pieChart = null;
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    collectDatas: null
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  touchHandler: function (e) {
+    console.log(pieChart.getCurrentDataIndex(e));
   },
+  onShow: function (e) {
+    var that = this;
+    var windowWidth = 320;
+    try {
+      var res = wx.getSystemInfoSync();
+      windowWidth = res.windowWidth;
+    } catch (e) {
+      console.error('getSystemInfoSync failed!');
+    }
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
+    wx.request({
+      url: getApp().globalData.server_url + 'small_collectResult_analysis_wx.action',
+      method: 'POST',
+      data: { 'user': getApp().globalData.userInfo },
+      header: {
+        'Accept': 'application/json'
+      },
+      success: function (res) {
+        that.setData({
+          collectDatas: res.data
+        });
+        pieChart = new wxCharts({
+          animation: true,
+          canvasId: 'canvas',
+          type: 'column',
+          categories: res.data.categories,
+          series: [{
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
+            name: '采集数量',
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
+            data: res.data.dataShow
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
+          }],
+          width: windowWidth,
+          height: 300
+        });
+      }
+    });
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
-})
+});
