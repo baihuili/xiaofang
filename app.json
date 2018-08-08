@@ -17,7 +17,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#1AAD19",
-    "navigationBarTitleText": "文昌消防",
+    "navigationBarTitleText": "文昌市消防安全大数据平台",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
@@ -45,7 +45,7 @@
         "text": "消防力量"
       },
       {
-        "pagePath": "pages/tongji/tongji",
+        "pagePath": "pages/charts/pie/pie",
         "iconPath": "images/tongji.png",
         "selectedIconPath": "images/tongji-on.png",
         "text": "统计图表"

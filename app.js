@@ -4,8 +4,6 @@ App({
     // 展示本地存储能力
     this.globalData.login = wx.getStorageSync('login') || null
     this.globalData.userInfo = wx.getStorageSync('userInfo') || null
-    
-
     wx.getLocation({
       success: res => {
        // console.log(res);

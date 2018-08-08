@@ -11,15 +11,17 @@
       </view>
       <view class="weui-tab__panel">
         <view class="" hidden="{{activeIndex != 0}}">
-			<map id="map" longitude="110.74978222747802" include-points="{{markers}}" latitude="19.621861960580546" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 100vh;"></map>
-		</view>
-        <view  hidden="{{activeIndex != 1}}">
-			<map id="map" longitude="110.74978222747802" include-points="{{markers}}" latitude="19.621861960580546" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 100vh;"></map>
-		</view>
-        <view  hidden="{{activeIndex != 2}}">
-			<map id="map" longitude="110.74978222747802" include-points="{{markers}}" latitude="19.621861960580546" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 100vh;"></map>
-		</view>
-
+          <map id="map"  include-points="{{markers1}}"  markers="{{markers1}}"  scale="{{scale1}}"
+            show-location style="width: 100%; height: 100vh;"></map>
+        </view>
+        <view hidden="{{activeIndex != 1}}">
+          <map id="map"  include-points="{{markers2}}"  markers="{{markers2}}"  scale="{{scale2}}"
+            show-location style="width: 100%; height: 100vh;"></map>
+        </view>
+        
+        <view hidden="{{activeIndex != 2}}">
+          <map id="map"  include-points="{{markers3}}"  scale="{{scale3}}" markers="{{markers3}}" bindcallouttap="click"  show-location style="width: 100%; height: 100vh;"></map>
+        </view>
       </view>
     </view>
   </view>

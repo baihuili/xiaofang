@@ -18,7 +18,7 @@ page{
 .login-img{ 
  width: 750rpx; 
 } 
-  
+
 /*表单内容*/
 .login-from { 
  margin-top: 20px; 
@@ -38,7 +38,7 @@ page{
 } 
   
 .loginLab { 
- margin: 15px 15px 15px 10px; 
+ margin: 15px 5px 15px 10px; 
  color: #545454; 
  font-size: 14px
 } 

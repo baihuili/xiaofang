@@ -16,6 +16,12 @@ Page({
       userInfo: getApp().globalData.userInfo,
       login: getApp().globalData.login
     });
+
+    if (true == this.data.login) {
+    } else {
+      wx.hideTabBar({
+      })
+    }
   },
 
   // 获取输入账号 
@@ -48,6 +54,7 @@ Page({
         logBtnDisable: true,
         loading: true
       });
+
       wx.request({
         url: getApp().globalData.server_url + 'small_login.action',
         method: "POST",
@@ -73,8 +80,12 @@ Page({
               ['login']: true
             });
 
+            getApp().globalData.userInfo = that.data.userInfo;
+
             wx.setStorageSync('login', true);
             wx.setStorageSync('userInfo', that.data.userInfo);
+            wx.showTabBar({              
+            });
           } else {
             wx.showModal({
               content: '用户名、密码错误',
@@ -98,5 +109,8 @@ Page({
     });
     wx.setStorageSync('login', false);
     wx.setStorageSync('userInfo', null);
+    wx.hideTabBar({
+      
+    });
   }
 })
