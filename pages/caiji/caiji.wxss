@@ -55,7 +55,7 @@ page{
   /*宽度75%，高度占满，并使用百分比布局*/
   width: 70%;
   height: 100%;
-  padding: 0px 0 0 10px;
+  padding: 0px 0 0 2px;
   box-sizing: border-box;
   background: #fff;
 }

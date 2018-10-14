@@ -16,6 +16,12 @@ Page({
       userInfo: getApp().globalData.userInfo,
       login: getApp().globalData.login
     });
+
+    if (true == this.data.login) {
+    } else {
+      wx.hideTabBar({
+      })
+    }
   },
 
   // 获取输入账号 
@@ -24,7 +30,7 @@ Page({
     this.setData({
       [up]: e.detail.value
     });
-
+    console.log(e.detail.value);
   },
 
   // 获取输入密码 
@@ -48,6 +54,7 @@ Page({
         logBtnDisable: true,
         loading: true
       });
+
       wx.request({
         url: getApp().globalData.server_url + 'small_login.action',
         method: "POST",
@@ -65,16 +72,24 @@ Page({
             var secrect = "userInfo.secrect";
             var userRealName = "userInfo.userRealName";
             var password = "userInfo.password";
+            var userType = "userInfo.userType";
+            var orgId = "userInfo.sysorganization.id";
             that.setData({
               [id]: res.data.id,
               [secrect]: res.data.secrect,
               [userRealName]: res.data.userRealName,
               [password]: null,
+              [userType]: res.data.userType,
+              [orgId]: res.data.sysorganizationId,
               ['login']: true
             });
 
+            getApp().globalData.userInfo = that.data.userInfo;
+
             wx.setStorageSync('login', true);
             wx.setStorageSync('userInfo', that.data.userInfo);
+            wx.showTabBar({              
+            });
           } else {
             wx.showModal({
               content: '用户名、密码错误',
@@ -98,5 +113,8 @@ Page({
     });
     wx.setStorageSync('login', false);
     wx.setStorageSync('userInfo', null);
+    wx.hideTabBar({
+      
+    });
   }
 })

@@ -1,11 +1,9 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
+    // 本地存储
     this.globalData.login = wx.getStorageSync('login') || null
     this.globalData.userInfo = wx.getStorageSync('userInfo') || null
-    
-
     wx.getLocation({
       success: res => {
        // console.log(res);
@@ -18,6 +16,6 @@ App({
     login:null,//是否已经登录
     userInfo: null,
     location:null,
-    server_url:'http://localhost:8080/xiaofang/'
+    server_url:'http://47.92.201.106/'
   }
 })

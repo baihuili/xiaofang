@@ -1,123 +1,151 @@
 <!--主盒子-->
-<view class="container" style="margin-bottom: 50px;">
+<form bindsubmit='submitPage'>
+  <view class="container" style="margin-bottom: 50px;">
 
-  <!--左侧栏-->
-  <scroll-view class="nav_left" style="height: 100%"  scroll-y="true">
-	
+    <!--左侧栏-->
+    <scroll-view class="nav_left" style="height: 100%" scroll-y="true">
 
-      <view class="nav_left_items {{curNav == 999999 ? 'active' : ''}}" bindtap="switchRightTab" data-index="999999" data-id="999999">
+
+      <view class="nav_left_items {{curNav == 999990 ? 'active' : ''}}" bindtap="switchRightTab" data-index="999990" data-id="999990">
         基本信息
       </view>
-   
-   
 
-      <view wx:for="{{navItems}}"class="nav_left_items {{curNav == index ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">
+
+
+      <view wx:for="{{navItems}}" class="nav_left_items {{curNav == index ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">
         {{item.short_title}}
 
 
         <icon type="success" size="15" wx:if="{{item.optionSelect.length > 0}}"></icon>
         <view class="weui-badge" style="margin-left: 2px;" wx:if="{{item.files.length > 0}}">{{item.files.length}}</view>
       </view>
-    
-  </scroll-view>
-  <!--右侧栏-->
-  <scroll-view class="nav_right" scroll-y="true" style="height: 100%" scroll-into-view="{{toView}}" bindscroll="scrollRight">
-    <view id="v999999" style="width: 100%;min-height:100%" class="page__bd">
-			
-			<view class="weui-cells weui-cells_after-title">
-				<view class="weui-cell weui-cell_input">
-					<view class="weui-cell__hd">
-						<view class="weui-label">单位(场所)名称:</view>
-					</view>
-					<view class="weui-cell__bd">
-						<input class="weui-input"/>
-					</view>
-				</view>
-				<view class="weui-cell weui-cell_input">
-					<view class="weui-cell__hd">
-						<view class="weui-label">地址:</view>
-					</view>
-					<view class="weui-cell__bd">
-						<input class="weui-input"/>
-					</view>
-				</view>
-				<view class="weui-cell weui-cell_input">
-					<view class="weui-cell__hd">
-						<view class="weui-label">法人代表:</view>
-					</view>
-					<view class="weui-cell__bd">
-						<input class="weui-input"/>
-					</view>
-				</view>
-				<view class="weui-cell weui-cell_input">
-					<view class="weui-cell__hd">
-						<view class="weui-label">电话:</view>
-					</view>
-					<view class="weui-cell__bd">
-						<input class="weui-input"/>
-					</view>
-				</view>
-				<view class="weui-cell weui-cell_input">
-					<view class="weui-cell__hd">
-						<view class="weui-label">检查人:</view>
-					</view>
-					<view class="weui-cell__bd">
-						<input class="weui-input"/>
-					</view>
-				</view>
-				<view class="weui-cell weui-cell_input">
-					<view class="weui-cell__hd">
-						<view class="weui-label">陪同检查人员:</view>
-					</view>
-					<view class="weui-cell__bd">
-						<input class="weui-input"/>
-					</view>
-				</view>
-				
-				
-			</view>  
-
-				
-
-						<map id="map" longitude="{{myLocation.longitude}}" latitude="{{myLocation.latitude}}" scale="16"
-							 show-location style="width: 250px; height: 200px;">
-						</map>
-
-    </view>
-    <view id="v{{index}}" wx:for="{{navItems}}" style="width: 100%;min-height:100%">
-      <view class="page__title">{{index+1}}、{{item.title}}</view>
-      <radio-group class="radio-group" bindchange="optionChange" data-index="{{index}}">
-        <label class="weui-cell weui-check__label" wx:for="{{item.optionList}}" wx:for-item="option">
-          <radio value="{{option.id}}" checked="{{option.checked}}" />
-          <view class="weui-cell__bd">{{option.title}}</view>
-        </label>
-      </radio-group>
-      <view class="weui-uploader">
-        <view class="weui-uploader__hd">
-          <view class="weui-uploader__title">图片上传</view>
-        </view>
-        <view class="weui-uploader__bd">
-          <view class="weui-uploader__files" id="uploaderFiles">
-
-            <view class="weui-uploader__file weui-uploader__file_status" wx:for="{{item.files}}" wx:for-item="img_file" wx:for-index="index_img">
-              <image class="weui-uploader__img" bindtap="previewImage" id="{{img_file}}" src="{{img_file}}" mode="aspectFill" data-index="{{index}}" />
-              <view bindtap="spliceImage" class="weui-uploader__file-content" data-image_index="{{index_img}}" data-index="{{index}}">删除</view>
-            </view>
-
-
-          </view>
-          <view class="weui-uploader__input-box">
-            <view class="weui-uploader__input" data-index="{{index}}" bindtap="chooseImage"></view>
-          </view>
-        </view>
+	  <view class="nav_left_items {{curNav == 999998 ? 'active' : ''}}" bindtap="switchRightTab" data-index="999998" data-id="999998">
+         其他
+      </view>
+	  <view class="nav_left_items {{curNav == 999999 ? 'active' : ''}}" bindtap="switchRightTab" data-index="999999" data-id="999999">
+        检查结论
       </view>
 
-    </view>
+    </scroll-view>
+    <!--右侧栏-->
+    <scroll-view class="nav_right" scroll-y="true" style="height: 100%" scroll-into-view="{{toView}}" bindscroll="scrollRight">
 
-  </scroll-view>
-</view>
-<view class="bottom">
-<button class="weui-btn" type="primary">提  交</button>
-</view>
+      <view id="v999990" style="width: 100%;min-height:100%" class="page__bd">
+
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">单位(场所)名称:</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入" name="place_name" />
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">地址:</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入" name="address" />
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">法人代表:</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入" name="legal_person"/>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">电话:</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入" name="phone"/>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">检查人:</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入" name="inspector"/>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">陪同检查人员:</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入" name="attendant"/>
+            </view>
+          </view>
+        </view>
 
 
+
+        <map id="map" longitude="{{myLocation.longitude}}" latitude="{{myLocation.latitude}}" scale="16" show-location style="width: 250px; height: 200px;">
+        </map>
+
+      </view>
+      <view id="v{{index}}" wx:for="{{navItems}}" style="width: 100%;min-height:100%">
+        <view class="page__title">{{index+1}}、{{item.title}}</view>
+        <radio-group class="radio-group" bindchange="optionChange" data-index="{{index}}">
+          <label class="weui-cell weui-check__label" wx:for="{{item.optionList}}" wx:for-item="option">
+            <radio value="{{option.id}}" checked="{{option.checked}}" />
+            <view class="weui-cell__bd">{{option.title}}</view>
+          </label>
+        </radio-group>
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">图片上传</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__files" id="uploaderFiles">
+
+              <view class="weui-uploader__file weui-uploader__file_status" wx:for="{{item.files}}" wx:for-item="img_file" wx:for-index="index_img">
+                <image class="weui-uploader__img" bindtap="previewImage" id="{{img_file}}" src="{{img_file}}" mode="aspectFill" data-index="{{index}}" />
+                <view bindtap="spliceImage" class="weui-uploader__file-content" data-image_index="{{index_img}}" data-index="{{index}}">删除</view>
+              </view>
+
+
+            </view>
+            <view class="weui-uploader__input-box">
+              <view class="weui-uploader__input" data-index="{{index}}" bindtap="chooseImage"></view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+	  <view id="v999998" style="width: 100%;min-height:100%">
+        <view class="page__title">其他</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入" name="other" style="height: 3.3em" />
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+        </view>
+	</view>	
+	  <view id="v999999" style="width: 100%;min-height:100%">
+        <view class="page__title">消防检查结论</view>
+        <radio-group name="result" class="radio-group" bindchange="resultChange">
+          <label class="weui-cell weui-check__label">
+            <radio value="1"/>
+            <view class="weui-cell__bd">合格</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <radio value="2"  />
+            <view class="weui-cell__bd">不合格</view>
+          </label>
+        </radio-group>
+	</view>	
+
+    </scroll-view>
+  </view>
+  <view class="bottom">
+    <button class="weui-btn" type="{{btnType}}" disabled="{{btnDisabled}}" form-type='submit'>提 交</button>
+  </view>
+</form>

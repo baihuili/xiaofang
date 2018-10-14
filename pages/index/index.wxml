@@ -1,33 +1,41 @@
 <view class="container">
   <view class="login-icon">
-    <image class="login-img" src="../../images/loginLog.jpg"></image>
+    <image class="login-img" src="../../images/login.png"></image>
   </view>
-  <view class="login-from" hidden="{{login}}">
+  <view class="weui-cells weui-cells_after-title" hidden="{{login}}">
 
-    <!--账号-->
-    <view class="inputView">
-      <image class="nameImage" src="../../images/name.png"></image>
-      <label class="loginLab">账号</label>
-      <input class="inputText" placeholder="请输入账号" bindinput="phoneInput" />
-    </view>
-    <view class="line"></view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__ft">
+        <image class="nameImage" src="../../images/name.png"></image>
+      </view>
+      <view class="weui-cell__hd">
 
-    <!--密码-->
-    <view class="inputView">
-      <image class="keyImage" src="../../images/key.png"></image>
-      <label class="loginLab">密码</label>
-      <input class="inputText" password="true" placeholder="请输入密码" bindinput="passwordInput" />
+        <view class="weui-label loginLab">账号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="inputText" value="{{userInfo.username}}" placeholder="请输入账号" bindinput="phoneInput" />
+      </view>
     </view>
-
-    <!--按钮-->
-    <view class="loginBtnView">
-      <button class="loginBtn" type="primary" disabled='{{logBtnDisable}}' size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" bindtap="login">登  录</button>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__ft">
+        <image class="nameImage" src="../../images/key.png"></image>
+      </view>
+      <view class="weui-cell__hd">
+        <view class="weui-label loginLab">密码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="inputText" password="true" placeholder="请输入密码" value="{{userInfo.password}}" bindinput="passwordInput" />
+      </view>
     </view>
+  </view>
+  <!--按钮-->
+  <view class="loginBtnView" hidden="{{login}}">
+    <button class="loginBtn" type="primary" disabled='{{logBtnDisable}}' size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" bindtap="login">登 录</button>
   </view>
   <view class="login-from" hidden="{{!login}}">
     <view class="page__hd">
       <view class="page__title">欢迎您，{{userInfo.userRealName}}</view>
     </view>
-    <button class="loginBtn" type="warn" plain="{{plain}}" bindtap="logout">退  出</button>
+    <button class="loginBtn" type="warn" plain="{{plain}}" bindtap="logout">退 出</button>
   </view>
 </view>
