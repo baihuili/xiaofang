@@ -24,7 +24,7 @@
         <view class="weui-label loginLab">密码</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="inputText" password="true" placeholder="请输入密码" value="{{userInfo.password}}" bindinput="passwordInput" />
+        <input class="inputText" password="true" placeholder="请输入密码"   value="{{userInfo.password}}" bindinput="passwordInput" />
       </view>
     </view>
   </view>

@@ -22,7 +22,7 @@ Page({
         'Accept': 'application/json'
       },
       success: function (res) {
-        console.log(res.data)
+
         that.setData({
           navItems: res.data
         })
@@ -115,21 +115,24 @@ Page({
   submitPage: function (e) {
     var that = this;
     var data = e.detail.value;
-	this.setData({
-      btnDisabled:true
+    this.setData({
+      btnDisabled: true
     });
-	wx.showToast({  
-        title: '正在提交...',  
-        icon: 'loading',  
-        mask: true,  
-        duration: 100000  
-      });
+    wx.showToast({
+      title: '正在提交...',
+      icon: 'loading',
+      mask: true,
+      duration: 100000
+    });
     //上传基本信息
     wx.request({
       url: getApp().globalData.server_url + 'small_collectResult_save.action',
-      data: { 'collectResult': data, 'user': getApp().globalData.userInfo },
+      data: {
+        'collectResult': data,
+        'user': getApp().globalData.userInfo
+      },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {// 设置请求的 header
+      header: { // 设置请求的 header
         'content-type': 'application/json'
       },
       success: function (res) {
@@ -141,33 +144,35 @@ Page({
         if (success) {
           that.submitAnswer(res.data.id);
         } else {
-			wx.hideToast(); 
-this.setData({
-      btnDisabled:false
-    });			
+          wx.hideToast();
+          this.setData({
+            btnDisabled: false
+          });
           wx.showModal({
             content: message,
             showCancel: false,
-            success: function (res) {
-            }
+            success: function (res) { }
           });
         }
       },
       fail: function (res) {
-        wx.hideToast();  
+        wx.hideToast();
       }
     })
 
   },
   submitAnswer: function (resultId) {
     var that = this;
-	
+
     //上传基本信息
     wx.request({
       url: getApp().globalData.server_url + 'small_question_collect.action',
-      data: { 'questionList': that.data.navItems, 'resultId': resultId },
+      data: {
+        'questionList': that.data.navItems,
+        'resultId': resultId
+      },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {// 设置请求的 header
+      header: { // 设置请求的 header
         'content-type': 'application/json'
       },
       success: function (res) {
@@ -177,76 +182,96 @@ this.setData({
 
 
         if (success) {
-          that.submitPic(res.data.answerIdList,resultId);
+          that.submitPic(res.data.answerIdList, resultId);
         } else {
-			wx.hideToast();  
-			this.setData({
-      btnDisabled:false
-    });		
+          wx.hideToast();
+          this.setData({
+            btnDisabled: false
+          });
           wx.showModal({
             content: message,
             showCancel: false,
-            success: function (res) {
-            }
+            success: function (res) { }
           });
         }
       },
       fail: function (res) {
-		  wx.hideToast();  
+        wx.hideToast();
         console.log('cuowu' + ':' + res)
       }
     })
   },
-  submitPic: function (answerIdList,resultId) {
-		var that=this;
-		console.log(answerIdList);
-		var navItems =this.data.navItems;
-		for (var i = 0; i< navItems.length; i++) {  
-			var pics = navItems[i].files;
-			console.log('navItems[i].id'+navItems[i].id);
-			console.log(pics.length);
-			for(var j=0;j<pics.length;j++){
-				wx.uploadFile({
-				  url: getApp().globalData.server_url + 'small_resultPicture_save.action',
-				  filePath: pics[j],
-				  name: 'uploadImage',
-				  header: {  
-					"Content-Type": "multipart/form-data",
-					'accept': 'application/json',
-				  },
-				  formData:{
-					'resultPicture.resultId':resultId,
-					'resultPicture.questionId':navItems[i].id
-				  },
-				  success: function(res){
-						
-						console.log('data');
-				  },
-				  fail: function(res){
-					  wx.hideToast();  
-					  this.setData({
-      btnDisabled:false
-    });		
-					console.log('fail');
-		 
-				  },
-				})
-			}
-		        
-		
-		}
-		wx.hideToast();  
-		this.setData({
-      btnDisabled:false
-    });	
-	wx.showModal({
-            content: '采集成功',
-            showCancel: false,
-            success: function (res) {
-                that.onLoad();
+  submitPic: function (answerIdList, resultId) {
+    var that = this;
+
+    var navItems = this.data.navItems;
+    that.submitOnePic( resultId, navItems, 0, 0);
+  
+  },
+  submitOnePic:function(resultId, navItems,i,j){
+    var that = this;
+    
+    var pics = navItems[i].files;
+    
+    if(pics.length==0){
+      if (i < navItems.length - 1){
+        that.submitOnePic(resultId, navItems, i + 1, 0);
+      }else{
+        that.doSuccess();
+      }
+    }else{
+ 
+      wx.uploadFile({
+        url: getApp().globalData.server_url + 'small_resultPicture_save.action',
+        filePath: pics[j],
+        name: 'uploadImage',
+        header: {
+          "Content-Type": "multipart/form-data",
+          'accept': 'application/json',
+        },
+        formData: {
+          'resultPicture.resultId': resultId,
+          'resultPicture.questionId': navItems[i].id
+        },
+        success: function (res) {
+          if (i < navItems.length - 1) {
+            if (j < pics.length - 1) {
+              that.submitOnePic(resultId, navItems, i, j + 1);
+            } else {
+              that.submitOnePic(resultId, navItems, i + 1, 0);
             }
+          } else {
+            that.doSuccess();
+          }
+
+        },
+        fail: function (res) {
+          console.log(res);
+          wx.hideToast();
+          that.setData({
+            btnDisabled: false
+          });
+          console.log('fail');
+
+        },
+      })
+    }
+    
+  },
+  doSuccess:function(){
+    var that=this;
+    wx.hideToast();
+    this.setData({
+      btnDisabled: false
+    });
+    wx.showModal({
+      content: '采集成功',
+      showCancel: false,
+      success: function (res) {
+        that.onLoad();
+      }
     });
   }
-	  
+
 
 })

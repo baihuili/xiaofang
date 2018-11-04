@@ -44,8 +44,7 @@ page{
 } 
 .inputText { 
  flex: block; 
- float: right; 
- text-align: right; 
+
  margin-right: 22px; 
  margin-top: 11px; 
  color: #cccccc; 

@@ -33,6 +33,9 @@ Page({
           animation: true,
           canvasId: 'canvas',
           type: 'column',
+          yAxis:{
+            min:1
+          },
           categories: res.data.categories,
           series: [{
 

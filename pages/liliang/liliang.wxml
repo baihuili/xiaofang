@@ -10,19 +10,10 @@
         <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
       </view>
       <view class="weui-tab__panel">
-        <view class="" hidden="{{activeIndex != 0}}">
-          <map id="map"  include-points="{{markers1}}"  markers="{{markers1}}"  scale="{{scale1}}"
-            show-location style="width: 100%; height: 100vh;"></map>
+       
+          <map id="map"  include-points="{{markers}}"  scale="{{scale}}" markers="{{markers}}" bindcallouttap="click"  show-location style="width: 100%; height: 100vh;"></map>
         </view>
-        <view hidden="{{activeIndex != 1}}">
-          <map id="map"  include-points="{{markers2}}"  markers="{{markers2}}"  scale="{{scale2}}"
-            show-location style="width: 100%; height: 100vh;"></map>
-        </view>
-        
-        <view hidden="{{activeIndex != 2}}">
-          <map id="map"  include-points="{{markers3}}"  scale="{{scale3}}" markers="{{markers3}}" bindcallouttap="click"  show-location style="width: 100%; height: 100vh;"></map>
-        </view>
-      </view>
+     
     </view>
   </view>
 </view>

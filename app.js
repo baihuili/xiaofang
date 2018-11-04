@@ -16,6 +16,6 @@ App({
     login:null,//是否已经登录
     userInfo: null,
     location:null,
-    server_url:'http://47.92.201.106/'
+    server_url:'https://wenchang.119hn.com/'
   }
 })

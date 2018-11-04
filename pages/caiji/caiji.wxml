@@ -84,7 +84,8 @@
         </view>
 
 
-
+        <input hidden='{{true}}' name="longitude" value="{{myLocation.longitude}}"></input>
+        <input hidden='{{true}}' name="latitude" value="{{myLocation.latitude}}"></input>
         <map id="map" longitude="{{myLocation.longitude}}" latitude="{{myLocation.latitude}}" scale="16" show-location style="width: 250px; height: 200px;">
         </map>
 

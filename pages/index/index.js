@@ -30,7 +30,7 @@ Page({
     this.setData({
       [up]: e.detail.value
     });
-    console.log(e.detail.value);
+    
   },
 
   // 获取输入密码 
@@ -108,7 +108,13 @@ Page({
   },
   logout: function () {
     this.setData({
-      userInfo: null,
+      userInfo: {
+        id: null,
+        username: '',
+        password: '',
+        userRealName: '',
+        secrect: ''
+      },
       login: false
     });
     wx.setStorageSync('login', false);

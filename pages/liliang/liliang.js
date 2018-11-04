@@ -6,13 +6,12 @@ Page({
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    scale1:16,
-    scale2: 16,
-    scale3: 16,	
 	positons:[],
   markers1: [],
   markers2: [],
-  markers3: []
+  markers3: [],
+  scale:12,
+  markers:[]
   },
   onLoad: function () {
     var that = this;
@@ -40,10 +39,11 @@ Page({
         for(var index in res.data){
 			var pos=res.data[index];
 			var type=pos.type;
-			console.log(type);
+      var resourceStatus = pos.resourceStatus;
 			if(type==1){
 				var callout={};
 				var marker={};
+        
         callout['content'] = pos.name + '\n负责人：'+pos.head+'\n电话：' +pos.phone;
 				callout['display']='ALWAYS';
 				callout['padding']=10;
@@ -53,6 +53,13 @@ Page({
 				marker['callout']=callout;
 				marker['latitude']=pos.latitude;
 				marker['longitude']=pos.longitude;
+        if(resourceStatus==2){
+          marker['iconPath'] = '/images/yellow.png';
+        } else if (resourceStatus == 3) {
+          marker['iconPath'] = '/images/red.png';
+        }else{
+          marker['iconPath'] = '/images/blue.png';
+        }
 				markers1.push(marker);
 			}else if(type==2){
 				var callout={};
@@ -66,6 +73,13 @@ Page({
 				marker['callout']=callout;
 				marker['latitude']=pos.latitude;
 				marker['longitude']=pos.longitude;
+        if (resourceStatus == 2) {
+          marker['iconPath'] = '/images/yellow.png';
+        } else if (resourceStatus == 3) {
+          marker['iconPath'] = '/images/red.png';
+        } else {
+          marker['iconPath'] = '/images/blue.png';
+        }
 				markers2.push(marker);
 			}else if(type==3 || type==4){
 				var callout={};
@@ -79,28 +93,56 @@ Page({
 				marker['callout']=callout;
 				marker['latitude']=pos.latitude;
 				marker['longitude']=pos.longitude;
+        if (resourceStatus == 2) {
+          marker['iconPath'] = '/images/yellow.png';
+        } else if (resourceStatus == 3) {
+          marker['iconPath'] = '/images/red.png';
+        } else {
+          marker['iconPath'] = '/images/blue.png';
+        }
 				markers3.push(marker);
 			}	
 		}
 		
 		that.setData({
 			positons:res.data,
+      markers: markers1,
 			markers1:markers1,
 			markers2:markers2,
 			markers3:markers3,
-			scale1:14,
-			scale2: 14,
-			scale3: 14
+      scale: 12
 		});
       }
     })
   },
   tabClick: function (e) {
+    console.log(e.currentTarget.id);
+    var that=this;
     this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
+      sliderOffset: e.currentTarget.offsetLeft
+      
 
     });
+
+    if (e.currentTarget.id==0){
+      that.setData({
+        markers: that.data.markers1,
+        scale: 12
+      });
+    }
+    if (e.currentTarget.id == 1) {
+      that.setData({
+        markers: that.data.markers2,
+        scale: 12
+      });
+    }
+    if (e.currentTarget.id == 2) {
+      that.setData({
+        markers: that.data.markers3,
+        scale: 12
+      });
+    }
+    
   },
   markertap(e) {
     console.log(e.markerId)
