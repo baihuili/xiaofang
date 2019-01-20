@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.0",
+	"libVersion": "2.4.2",
 	"appid": "wxd7040ad31fa4726b",
 	"projectname": "xiaofang",
 	"condition": {
