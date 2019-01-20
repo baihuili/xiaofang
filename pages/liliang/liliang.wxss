@@ -1,12 +1,49 @@
-page,
-.page,
-.page__bd{
-    height: 100%;
+page, .page, .page__bd {
+  height: 100%;
 }
-.page__bd{
-    padding-bottom: 0;
+.page__bd {
+  padding-bottom: 0;
 }
-.weui-tab__content{
-    padding-top: 60px;
-    text-align: center;
+.weui-tab__content {
+  padding-top: 60px;
+  text-align: center;
+}
+.cover_body {
+  position: fixed;
+  width: 100vw;
+  border-radius: 5rpx;
+  background: white;
+  bottom: 0;
+  padding-top: 5px;
+  padding-left: 10rpx;
+  padding-right: 10px;
+}
+
+.text_title {
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 50rpx;
+}
+
+.text_content {
+  color: black;
+  line-height: 40rpx;
+}
+
+.btn_corver {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 5px;  
+}
+.btn_corver_red{
+   background-color:chocolate; /* Green */
 }

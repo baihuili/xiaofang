@@ -10,10 +10,25 @@
         <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
       </view>
       <view class="weui-tab__panel">
-       
-          <map id="map"  include-points="{{markers}}"  scale="{{scale}}" markers="{{markers}}" bindcallouttap="click"  show-location style="width: 100%; height: 100vh;"></map>
-        </view>
-     
+        <map id="map" include-points="{{markers}}" scale="{{scale}}" markers="{{markers}}" bindmarkertap="click" show-location style="width: 100%; height: 100vh;">
+          <cover-view class="cover_body" hidden="{{positonSelected==null}}">
+            <cover-view class="text_title">{{positonSelected.name}}</cover-view>
+            <cover-view class="text_content">负责人：{{positonSelected.head}}</cover-view>
+            <cover-view class="text_content">电话：{{positonSelected.phone}}</cover-view>
+            <cover-view class="text_content">地址：{{positonSelected.position}}</cover-view>
+            <cover-view class="text_content" hidden="{{positonSelected.press==''}}">
+            水压：{{positonSelected.press}}mpa
+            </cover-view>
+            <cover-view class="text_content">说明：{{positonSelected.remark}}</cover-view>
+            <cover-view class='btn_corver'  bindtap='navigate'>
+                导 航
+             </cover-view>
+              <cover-view class='btn_corver btn_corver_red'   hidden="{{userType!=1}}" bindtap='modifyPistion'>
+              修正位置
+            </cover-view>
+          </cover-view>
+        </map>
+      </view>
     </view>
   </view>
 </view>

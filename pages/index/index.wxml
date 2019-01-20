@@ -3,7 +3,6 @@
     <image class="login-img" src="../../images/login.png"></image>
   </view>
   <view class="weui-cells weui-cells_after-title" hidden="{{login}}">
-
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__ft">
         <image class="nameImage" src="../../images/name.png"></image>

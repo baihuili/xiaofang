@@ -3,7 +3,7 @@
   <view class="title">
     本月采集数量分布图
   </view>
-  <canvas canvas-id="canvas" class="canvas" style="height:300px" ></canvas>
+  <canvas canvas-id="canvas" class="canvas" style="height:600px;width:100%" ></canvas>
 
 
 

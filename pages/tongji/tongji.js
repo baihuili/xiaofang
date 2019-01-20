@@ -17,7 +17,6 @@ Page({
     } catch (e) {
       console.error('getSystemInfoSync failed!');
     }
-
     wx.request({
       url: getApp().globalData.server_url + 'small_collectResult_analysis_wx.action',
       method: 'POST',

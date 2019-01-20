@@ -4,13 +4,9 @@
 
     <!--左侧栏-->
     <scroll-view class="nav_left" style="height: 100%" scroll-y="true">
-
-
       <view class="nav_left_items {{curNav == 999990 ? 'active' : ''}}" bindtap="switchRightTab" data-index="999990" data-id="999990">
         基本信息
       </view>
-
-
 
       <view wx:for="{{navItems}}" class="nav_left_items {{curNav == index ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.id}}">
         {{item.short_title}}
@@ -19,10 +15,10 @@
         <icon type="success" size="15" wx:if="{{item.optionSelect.length > 0}}"></icon>
         <view class="weui-badge" style="margin-left: 2px;" wx:if="{{item.files.length > 0}}">{{item.files.length}}</view>
       </view>
-	  <view class="nav_left_items {{curNav == 999998 ? 'active' : ''}}" bindtap="switchRightTab" data-index="999998" data-id="999998">
-         其他
+      <view class="nav_left_items {{curNav == 999998 ? 'active' : ''}}" bindtap="switchRightTab" data-index="999998" data-id="999998">
+        其他
       </view>
-	  <view class="nav_left_items {{curNav == 999999 ? 'active' : ''}}" bindtap="switchRightTab" data-index="999999" data-id="999999">
+      <view class="nav_left_items {{curNav == 999999 ? 'active' : ''}}" bindtap="switchRightTab" data-index="999999" data-id="999999">
         检查结论
       </view>
 
@@ -54,7 +50,7 @@
               <view class="weui-label">法人代表:</view>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="请输入" name="legal_person"/>
+              <input class="weui-input" placeholder="请输入" name="legal_person" />
             </view>
           </view>
           <view class="weui-cell weui-cell_input">
@@ -62,7 +58,7 @@
               <view class="weui-label">电话:</view>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="请输入" name="phone"/>
+              <input class="weui-input" placeholder="请输入" name="phone" />
             </view>
           </view>
           <view class="weui-cell weui-cell_input">
@@ -70,7 +66,7 @@
               <view class="weui-label">检查人:</view>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="请输入" name="inspector"/>
+              <input class="weui-input" placeholder="请输入" name="inspector" />
             </view>
           </view>
           <view class="weui-cell weui-cell_input">
@@ -78,7 +74,7 @@
               <view class="weui-label">陪同检查人员:</view>
             </view>
             <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="请输入" name="attendant"/>
+              <input class="weui-input" placeholder="请输入" name="attendant" />
             </view>
           </view>
         </view>
@@ -86,7 +82,7 @@
 
         <input hidden='{{true}}' name="longitude" value="{{myLocation.longitude}}"></input>
         <input hidden='{{true}}' name="latitude" value="{{myLocation.latitude}}"></input>
-        <map id="map" longitude="{{myLocation.longitude}}" latitude="{{myLocation.latitude}}" scale="16" show-location style="width: 250px; height: 200px;">
+        <map id="map" longitude="{{myLocation.longitude}}" latitude="{{myLocation.latitude}}" scale="18" show-location style="width: 400px; height: 300px;">
         </map>
 
       </view>
@@ -119,30 +115,30 @@
         </view>
 
       </view>
-	  <view id="v999998" style="width: 100%;min-height:100%">
+      <view id="v999998" style="width: 100%;min-height:100%">
         <view class="page__title">其他</view>
         <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="请输入" name="other" style="height: 3.3em" />
-                    <view class="weui-textarea-counter">0/200</view>
-                </view>
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <textarea class="weui-textarea" placeholder="请输入" name="other" style="height: 3.3em" />
+              <view class="weui-textarea-counter">0/200</view>
             </view>
+          </view>
         </view>
-	</view>	
-	  <view id="v999999" style="width: 100%;min-height:100%">
+      </view>
+      <view id="v999999" style="width: 100%;min-height:100%">
         <view class="page__title">消防检查结论</view>
         <radio-group name="result" class="radio-group" bindchange="resultChange">
           <label class="weui-cell weui-check__label">
-            <radio value="1"/>
+            <radio value="1" />
             <view class="weui-cell__bd">合格</view>
           </label>
           <label class="weui-cell weui-check__label">
-            <radio value="2"  />
+            <radio value="2" />
             <view class="weui-cell__bd">不合格</view>
           </label>
         </radio-group>
-	</view>	
+      </view>
 
     </scroll-view>
   </view>
