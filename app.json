@@ -1,20 +1,20 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/caiji/caiji",
     "pages/liliang/liliang",
-	 "pages/tongji/tongji"
+    "pages/tongji/tongji"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1AAD19",
     "navigationBarTitleText": "文昌市消防安全大数据平台",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#D42624",
-    "borderStyle": "#D42624",
+    "borderStyle": "white",
     "backgroundColor": "#FFFFFF",
     "list": [
       {
@@ -42,5 +42,6 @@
         "text": "统计图表"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

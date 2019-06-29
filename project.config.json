@@ -11,6 +11,8 @@
 	"libVersion": "2.4.2",
 	"appid": "wxd7040ad31fa4726b",
 	"projectname": "xiaofang",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
